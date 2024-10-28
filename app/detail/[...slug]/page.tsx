@@ -1,6 +1,6 @@
 export default function Detail() {
   return (
-    <div>
+    <div style={{ marginLeft: "250px" }}>
       <h2>Detail page</h2>
     </div>
   );
