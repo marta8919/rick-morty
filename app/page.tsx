@@ -3,7 +3,7 @@ import Carousel from "./components/carousel";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <div className={styles.carrouselPage}>
       <Carousel />
     </div>
   );

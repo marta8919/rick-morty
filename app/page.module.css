@@ -1,11 +1,8 @@
 .main {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 200px 80%;
   grid-template-rows: 94% auto;
   height: 100vh;
-}
-
-.page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
@@ -14,15 +11,25 @@
   --button-secondary-hover: #f2f2f2;
 
   font-family: var(--font-geist-sans);
+}
+
+.carrouselPage {
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
+.listPage {
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  padding: 30px;
+}
+
 .header {
   padding: 50px 30px;
-  background-color: grey;
+  border-right: 1px solid gray;
 }
 
 .headerContent {
@@ -79,12 +86,16 @@
 } */
 
 .footer {
-  grid-column-start: 1;
-  grid-column-end: span 3;
-  background-color: blue;
+  grid-column: 1 / span 3;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 1px solid grey;
+  font-size: 12px;
+}
+
+.footer a {
+  text-decoration: underline;
 }
 
 /* Enable hover only on non-touch devices */
@@ -141,3 +152,50 @@
     filter: invert();
   }
 } */
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  gap: 30px;
+  width: 250px;
+  opacity: 0.5;
+}
+
+.card img {
+  border-radius: 100%;
+}
+
+.card:hover {
+  opacity: 1;
+}
+
+.card:hover > .cardImage {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.allCardsWrapper {
+  display: flex;
+  gap: 20px;
+  padding-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.loaderWrapper {
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}

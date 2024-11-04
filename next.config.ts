@@ -9,6 +9,11 @@ const nextConfig = {
         port: "",
         pathname: "/martacloud/**",
       },
+      {
+        protocol: "https",
+        hostname: "rickandmortyapi.com",
+        port: "",
+      },
     ],
   },
 };

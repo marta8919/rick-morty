@@ -1,13 +1,16 @@
-import Link from "next/link";
-import { gql } from "@apollo/client";
-import client from "@/lib/apolloClient";
+"use client";
+import { gql, useQuery } from "@apollo/client";
+import style from "../../page.module.css";
+import Card from "@/app/components/card";
+import Loader from "@/app/components/loader/loader";
 
-const getAllCharactersQuery = gql`
+export const GET_ALL_CHARACTERS = gql`
   query GetAllCharacters {
     characters {
       results {
         name
         id
+        image
       }
     }
   }
@@ -15,40 +18,29 @@ const getAllCharactersQuery = gql`
 
 interface Character {
   name: string;
-  __typename: string;
   id: number;
+  image: string;
 }
 
-export default async function ListPage() {
-  const { data, loading } = await client.query({
-    query: getAllCharactersQuery,
-  });
+export default function ListPage() {
+  const { data } = useQuery(GET_ALL_CHARACTERS);
 
-  if (data.characters.results.length) {
     return (
-      <div style={{ marginLeft: "250px" }}>
-        <h1>List page</h1>
-        {data.characters.results.map((one: Character, index: number) => (
-          <Link href={`/detail/${one.id}`} key={index}>
-            <p>{one.name}</p>
-          </Link>
-        ))}
+      <div className={style.listPage}>
+        <h1>Characters</h1>
+
+        {data && data.characters.results.length ? (
+          <div className={style.allCardsWrapper}>
+            {data.characters.results.map((one: Character, index: number) => (
+              <Card character={one} key={index} />
+            ))}
+          </div>
+        ) : (
+          <div className={style.loaderWrapper}>
+            <Loader />
+          </div>
+        )}
       </div>
     );
-  }
 
-  if (loading) {
-    return (
-      <div style={{ marginLeft: "250px" }}>
-        <p>Loading</p>
-      </div>
-    );
-  }
-
-  return (
-    <div style={{ marginLeft: "250px" }}>
-      <h1>List page</h1>
-      <Link href="/detail">Detail page</Link>
-    </div>
-  );
 }

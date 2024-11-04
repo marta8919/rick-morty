@@ -53,6 +53,7 @@ export default function Carousel(): JSX.Element {
       className={styles.carouselWrapper}
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
+      data-testid='carousel'
     >
       <Image
         src={images[slideIndex].src}

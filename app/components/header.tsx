@@ -6,11 +6,11 @@ const Header = () => {
     <div className={styles.header}>
       <div className={styles.headerContent}>
         <Link href={"/"}>Home</Link>
-        <Link href={"/list"}>Go to the list</Link>
+        <Link href={"/list"}>All characters</Link>
 
-        <div>Your last three detail pages</div>
+        <div>Your last three</div>
 
-        <div>Search field</div>
+        <div>Search</div>
       </div>
     </div>
   );
