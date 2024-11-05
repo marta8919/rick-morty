@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
-import ListPage, { GET_ALL_CHARACTERS } from "../app/list/[[...slug]]/page";
+import ListPage, { GET_ALL_CHARACTERS } from "../app/list/page";
 
 const mocks = [
   {
@@ -25,6 +25,8 @@ const mocks = [
           ],
         },
       },
+      loading: false,
+      error: false,
     },
   },
 ];
@@ -37,6 +39,7 @@ const mocksLoading = [
     result: {
       loading: true,
       data: {},
+      error: false,
     },
   },
 ];
@@ -55,14 +58,14 @@ it("all characters are rendered after graphql call", async () => {
   expect(name2).toBeInTheDocument();
 });
 
-it.only("renders loading spinner while loading", async () => {
+it("renders loading spinner while loading", () => {
   render(
     <MockedProvider addTypename={false} mocks={mocksLoading}>
       <ListPage />
     </MockedProvider>
   );
 
-  const loader = await screen.findByTestId("loader");
+  const loader = screen.queryByTestId("loader-testid");
 
   expect(loader).toBeInTheDocument();
 });

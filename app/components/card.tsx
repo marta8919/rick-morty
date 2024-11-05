@@ -12,10 +12,10 @@ interface Character {
   image: string;
 }
 
-export default function Card({ character, key }: CardProps) {
+export default function Card({ character }: CardProps) {
   const { name, id, image } = character;
   return (
-    <div key={key} className={style.cardWrapper}>
+    <div className={style.cardWrapper}>
       <Link href={`/detail/${id}`} className={style.card}>
         <Image
           src={image}
