@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  gap: 30px;
+  width: 250px;
+  opacity: 0.5;
+}
+
+.card img {
+  border-radius: 100%;
+}
+
+.card:hover {
+  opacity: 1;
+}
+
+.card:hover > .cardImage {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

@@ -1,6 +1,6 @@
 "use client";
 import { gql, useQuery } from "@apollo/client";
-import Card from "@/app/components/card";
+import Card from "@/app/components/card/card";
 import Loader from "@/app/components/loader/loader";
 import style from "../page.module.css";
 

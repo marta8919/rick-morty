@@ -1,0 +1,36 @@
+.detailCard {
+  border: 1px solid white;
+  border-radius: 10px;
+  display: flex;
+}
+
+.infoWrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-weight: 900;
+}
+
+.episodesWrapper {
+  height: 200px;
+  overflow: scroll;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.image {
+  border-radius: 10px;
+}

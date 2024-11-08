@@ -11,6 +11,8 @@
   --button-secondary-hover: #f2f2f2;
 
   font-family: var(--font-geist-sans);
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .carrouselPage {
@@ -98,91 +100,6 @@
   text-decoration: underline;
 }
 
-/* Enable hover only on non-touch devices */
-/* @media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-} */
-
-/* @media (max-width: 600px) { */
-/* .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  } */
-
-/* .main {
-    align-items: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-} */
-
-.card {
-  display: flex;
-  align-items: center;
-  justify-content: baseline;
-  gap: 30px;
-  width: 250px;
-  opacity: 0.5;
-}
-
-.card img {
-  border-radius: 100%;
-}
-
-.card:hover {
-  opacity: 1;
-}
-
-.card:hover > .cardImage {
-  animation: rotation 2s infinite linear;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
 .allCardsWrapper {
   display: flex;
   gap: 20px;
@@ -198,4 +115,44 @@
   align-items: center;
   justify-content: center;
   height: 80vh;
+}
+
+.customFadeIn {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.header1 {
+  padding-bottom: 30px;
+}
+
+.backBtn {
+  border: 1px solid white;
+  width: 200px;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.backBtn:hover {
+  background-color: white;
+  color: black;
 }
