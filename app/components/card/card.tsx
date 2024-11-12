@@ -1,8 +1,7 @@
-"use client";
 import Image from "next/image";
-import Link from "next/link";
 import style from "./card.module.css";
 import { createCookie } from "@/actions/cookies";
+import { useRouter } from "next/navigation";
 
 interface CardProps {
   character: Character;
@@ -16,9 +15,15 @@ interface Character {
 
 export default function Card({ character }: CardProps) {
   const { name, id, image } = character;
+  const router = useRouter();
+
+  const handleDetailClick = () => {
+    createCookie({ name: character.name, id: character.id });
+    router.push(`/detail/${id}`);
+  };
   return (
-    <div className={style.cardWrapper}>
-      <Link href={`/detail/${id}`} className={style.card}>
+    <div className={style.cardWrapper} onClick={handleDetailClick}>
+      <div className={style.card}>
         <Image
           src={image}
           alt={name}
@@ -27,14 +32,7 @@ export default function Card({ character }: CardProps) {
           className={style.cardImage}
         />
         <p>{name}</p>
-        <button
-          onClick={() =>
-            createCookie({ name: character.name, id: character.id })
-          }
-        >
-          add to cookies
-        </button>
-      </Link>
+      </div>
     </div>
   );
 }

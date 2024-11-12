@@ -19,6 +19,10 @@
   animation: rotation 2s infinite linear;
 }
 
+.cardWrapper {
+  cursor: pointer;
+}
+
 @keyframes rotation {
   from {
     transform: rotate(0deg);
