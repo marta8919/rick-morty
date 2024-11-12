@@ -1,16 +1,23 @@
 import { returnCookies } from "@/actions/cookies";
+import Link from "next/link";
 
 export default async function LastSeen() {
   const lastCookie = await returnCookies();
   return (
     <div>
-      <h2>Last seen</h2>
+      <p>Last seen</p>
       <ol>
-        {lastCookie.map((one: { name: string; id: number }, index: number) => (
-          <div key={index}>
-            <li>{one.name}</li>
-          </div>
-        ))}
+        {lastCookie && lastCookie.length
+          ? lastCookie.map(
+              (one: { name: string; id: number }, index: number) => (
+                <div key={index}>
+                  <li>
+                    <Link href={`/detail/${one.id}`}>{one.name}</Link>
+                  </li>
+                </div>
+              )
+            )
+          : null}
       </ol>
     </div>
   );

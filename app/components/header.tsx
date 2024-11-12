@@ -8,9 +8,7 @@ const Header = () => {
       <div className={styles.headerContent}>
         <Link href={"/"}>Home</Link>
         <Link href={"/list"}>All characters</Link>
-
         <LastSeen />
-
         <div>Search</div>
       </div>
     </div>
