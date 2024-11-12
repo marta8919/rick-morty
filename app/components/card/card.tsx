@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import style from "./card.module.css";
@@ -5,9 +6,9 @@ import { createCookie } from "@/actions/cookies";
 
 interface CardProps {
   character: Character;
-  key: number;
 }
 interface Character {
+  __typename: string;
   name: string;
   id: number;
   image: string;
@@ -26,7 +27,13 @@ export default function Card({ character }: CardProps) {
           className={style.cardImage}
         />
         <p>{name}</p>
-        <button onClick={createCookie("paco", "2")}>add to cookies</button>
+        <button
+          onClick={() =>
+            createCookie({ name: character.name, id: character.id })
+          }
+        >
+          add to cookies
+        </button>
       </Link>
     </div>
   );

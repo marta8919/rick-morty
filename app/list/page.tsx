@@ -11,12 +11,14 @@ export const GET_ALL_CHARACTERS = gql`
         name
         id
         image
+        __typename
       }
     }
   }
 `;
 
 interface Character {
+  __typename: string;
   name: string;
   id: number;
   image: string;
@@ -43,7 +45,9 @@ export default function ListPage() {
 
         <div className={style.allCardsWrapper}>
           {data.characters.results.map((one: Character, index: number) => (
-            <Card character={one} key={index} />
+            <div key={index}>
+              <Card character={one} />
+            </div>
           ))}
         </div>
       </div>

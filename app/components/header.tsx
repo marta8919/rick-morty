@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "../page.module.css";
+import LastSeen from "./lastSeen/lastSeen";
 
 const Header = () => {
   return (
@@ -8,7 +9,7 @@ const Header = () => {
         <Link href={"/"}>Home</Link>
         <Link href={"/list"}>All characters</Link>
 
-        <div>Your last three</div>
+        <LastSeen />
 
         <div>Search</div>
       </div>
