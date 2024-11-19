@@ -5,12 +5,18 @@ import { useParams } from "next/navigation";
 import style from "../../page.module.css";
 import Loader from "@/app/components/loader/loader";
 import DetailCard from "@/app/components/detailCard/detailCard";
+import { useEffect } from "react";
+import { createCookie } from "@/actions/cookies";
+import Error from "../../components/errorCard/errorCard";
 import Link from "next/link";
+
+import { useCookies } from "next-client-cookies";
 
 export const GET_CHARACTER = gql`
   query GetCharacter($id: ID!) {
     character(id: $id) {
       name
+      id
       gender
       species
       origin {
@@ -32,6 +38,21 @@ export default function Detail() {
     variables: { id },
   });
 
+  useEffect(() => {
+    if (data)
+      createCookie({
+        type: "CHARACTER",
+        name: data.character.name,
+        id: data.character.id,
+      });
+  }, [data]);
+
+  const cookies = useCookies();
+
+  const cookiePage = cookies.get("page");
+
+  console.log("cookie page", cookiePage);
+
   if (loading) {
     return (
       <div className={style.listPage}>
@@ -48,7 +69,7 @@ export default function Detail() {
       <div className={style.listPage}>
         <h1 className={style.header1}>Detail page</h1>
         <DetailCard character={data.character} />
-        <Link href={"/list"}>
+        <Link href={`/list?page=${cookiePage}`}>
           <div className={style.backBtn}>Go back to the list</div>
         </Link>
       </div>
@@ -56,6 +77,10 @@ export default function Detail() {
   }
 
   if (error) {
-    return <div>Custom Error</div>;
+    return (
+      <div className={style.listPage}>
+        <Error />
+      </div>
+    );
   }
 }

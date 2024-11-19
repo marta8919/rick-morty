@@ -1,7 +1,6 @@
 import Image from "next/image";
 import style from "./card.module.css";
-import { createCookie } from "@/actions/cookies";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface CardProps {
   character: Character;
@@ -15,14 +14,9 @@ interface Character {
 
 export default function Card({ character }: CardProps) {
   const { name, id, image } = character;
-  const router = useRouter();
 
-  const handleDetailClick = () => {
-    createCookie({ name: character.name, id: character.id });
-    router.push(`/detail/${id}`);
-  };
   return (
-    <div className={style.cardWrapper} onClick={handleDetailClick}>
+    <Link className={style.cardWrapper} href={`/detail/${id}`}>
       <div className={style.card}>
         <Image
           src={image}
@@ -33,6 +27,6 @@ export default function Card({ character }: CardProps) {
         />
         <p>{name}</p>
       </div>
-    </div>
+    </Link>
   );
 }

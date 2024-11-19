@@ -3,6 +3,7 @@ import Image from "next/image";
 
 interface Character {
   name: string;
+  id: number;
   gender: string;
   image: string;
   species: string;
