@@ -1,6 +1,6 @@
 "use client";
 
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useParams } from "next/navigation";
 import style from "../../page.module.css";
 import Loader from "@/app/components/loader/loader";
@@ -11,25 +11,7 @@ import Error from "../../components/errorCard/errorCard";
 import Link from "next/link";
 
 import { useCookies } from "next-client-cookies";
-
-export const GET_CHARACTER = gql`
-  query GetCharacter($id: ID!) {
-    character(id: $id) {
-      name
-      id
-      gender
-      species
-      origin {
-        name
-      }
-      image
-      episode {
-        name
-        episode
-      }
-    }
-  }
-`;
+import { GET_CHARACTER } from "@/queries/queries";
 
 export default function Detail() {
   const { id } = useParams<{ id: string }>();

@@ -1,0 +1,36 @@
+.listPage {
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  padding: 30px;
+}
+
+.loaderWrapper {
+  width: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.backBtn {
+  border: 1px solid white;
+  width: 200px;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.backBtn:hover {
+  background-color: white;
+  color: black;
+}
+
+.allCardsWrapper {
+  display: flex;
+  gap: 20px;
+  padding-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+}

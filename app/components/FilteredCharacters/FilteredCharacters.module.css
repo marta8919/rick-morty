@@ -1,0 +1,15 @@
+.filteredWrapper {
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  padding: 30px;
+}
+
+.filteredCards {
+  display: flex;
+  gap: 20px;
+  padding-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+}
