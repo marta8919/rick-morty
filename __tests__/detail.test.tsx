@@ -1,4 +1,5 @@
-import Detail, { GET_CHARACTER } from "@/app/detail/[id]/page";
+import Detail from "@/app/detail/[id]/page";
+import { GET_CHARACTER } from "@/queries/queries";
 import { MockedProvider } from "@apollo/client/testing";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";

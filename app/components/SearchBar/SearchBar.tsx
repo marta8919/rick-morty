@@ -1,39 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-// import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SearchBar() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
 
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState<string>();
 
   const handleChange = (event: { target: { value: string | undefined } }) => {
     setQuery(event.target.value);
   };
 
-  const handleSubmitSearch = () => {
-    // router.push("/list/search");
-    // window.location.assign(`/list?search=${query}`);
-    // router.push("/details");
-
-    //esto no funciona y nose porqué
-
-    const params = new URLSearchParams(searchParams);
-    params.set("search", "rick");
-    router.push(`${pathname}?${params.toString()}`);
+  const handleSubmitSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    setQuery("");
+    event.preventDefault();
+    router.push(`/list?search=${query}`);
   };
 
   return (
     <form onSubmit={handleSubmitSearch}>
       <label>Search by name:</label>
-      <input placeholder="search" onChange={handleChange} />
-
-      {/* Esta guarrada sí funciona */}
-      {/* <Link href={`/list?search=${query}`}>button test link</Link> */}
+      <input
+        placeholder="search"
+        onChange={handleChange}
+        type="text"
+        value={query}
+      />
+      <button type="submit">Search</button>
     </form>
   );
 }
